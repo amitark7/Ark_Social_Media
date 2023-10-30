@@ -26,9 +26,11 @@ const InfoCard = () => {
         setProfileUser(profileUser);
       }
     };
+    
     fetchProfileUser();
+    // eslint-disable-next-line
   }, [user]);
-
+  
 const handleLogout=()=>{
   dispatch(logout())
 }
@@ -36,7 +38,7 @@ const handleLogout=()=>{
   return (
     <div className="InfoCard">
       <div className="infoHead">
-        <h4>Your Info</h4>
+        <h4>Profile Info</h4>
         {user._id === profileUserId ? (
           <div>
             <UilPen
