@@ -9,8 +9,7 @@ const ProfileCard = ({location}) => {
   const {user}=useSelector((state)=>state.AuthReducer.authData)
   const posts=useSelector((state=>state.postReducer.posts))
   const serverPublic=process.env.REACT_APP_PUBLIC_FOLDER
-  console.log(user.followers)
-  console.log(user.following)
+
   return (
     <div className="ProfileCard">
       <div className="ProfileImages">

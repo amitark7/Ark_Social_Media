@@ -26,7 +26,7 @@ const handleFollow=()=>{
             <span>@{person.username}</span>
         </div>
     </div>
-    <button className='button fc-button' onClick={handleFollow}>
+    <button className={following?'button fc-button UnfollowButton':'button fc-button'} onClick={handleFollow}>
        {following?"Unfollow":"Follow"}
     </button>
 </div>

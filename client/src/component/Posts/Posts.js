@@ -3,16 +3,22 @@ import './Posts.css'
 import Post from '../Post/Post'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTimelinePosts } from '../../actions/postAction'
+import { useParams } from 'react-router-dom'
 
 const Posts = () => {
   const dispatch=useDispatch()
   const {user}=useSelector((state)=>state.AuthReducer.authData)
-  const{posts,loading}=useSelector((state)=>state.postReducer)
+  let {posts,loading}=useSelector((state)=>state.postReducer)
+const params=useParams()
 
   useEffect(()=>{
     dispatch(getTimelinePosts(user._id))
      // eslint-disable-next-line
   },[])
+
+  if(!posts) return "no Posts"
+  if(user._id) posts=posts.filter((post)=>post.userid===user._id)
+  if(params.id) posts=posts.filter((post)=>post.userid===params.id)
   return (
     <div className='Posts'>
         {loading?"Fetching Post...":
